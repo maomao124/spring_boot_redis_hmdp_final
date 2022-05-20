@@ -61,8 +61,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         {
             Long userId = blog.getUserId();
             User user = userService.getById(userId);
+            //判断用户是否已经点赞(检查设置在key是否包含value)
+            String key = "blog:liked:" + blog.getId();
+            Double score = stringRedisTemplate.opsForZSet().score(key, userId.toString());
             blog.setName(user.getNickName());
             blog.setIcon(user.getIcon());
+            blog.setIsLike(score != null);
         });
         return Result.ok(records);
     }
@@ -89,12 +93,18 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         Long userId = blog.getUserId();
         //查询
         User user = userService.getById(userId);
+        if (user == null)
+        {
+            //用户未登录，无需查询是否点赞
+            return Result.ok();
+        }
         //判断用户是否已经点赞(检查设置在key是否包含value)
-        Boolean member = stringRedisTemplate.opsForSet().isMember(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
+        String key = "blog:liked:" + blog.getId();
+        Double score = stringRedisTemplate.opsForZSet().score(key, userId.toString());
         //填充
         blog.setIcon(user.getIcon());
         blog.setName(user.getNickName());
-        blog.setIsLike(BooleanUtil.isTrue(member));
+        blog.setIsLike(score != null);
         //返回
         return Result.ok(blog);
     }
@@ -105,8 +115,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         //获取用户信息
         UserDTO user = UserHolder.getUser();
         //判断用户是否已经点赞(检查设置在key是否包含value)
-        Boolean member = stringRedisTemplate.opsForSet().isMember(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
-        if (BooleanUtil.isFalse(member))
+        Double score = stringRedisTemplate.opsForZSet().score(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
+        if (score == null)
         {
             //未点赞
             //数据库点赞数量+1
@@ -118,7 +128,8 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
                 //让redis数据过期
                 stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
                 //保存用户到Redis的set集合
-                stringRedisTemplate.opsForSet().add(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
+                stringRedisTemplate.opsForZSet().add(RedisConstants.BLOG_LIKED_KEY + id,
+                        user.getId().toString(), System.currentTimeMillis());
             }
 
         }
@@ -134,7 +145,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
                 //让redis数据过期
                 stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
                 //移除用户
-                stringRedisTemplate.delete(RedisConstants.BLOG_LIKED_KEY + id);
+                stringRedisTemplate.opsForZSet().remove(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
             }
         }
 
