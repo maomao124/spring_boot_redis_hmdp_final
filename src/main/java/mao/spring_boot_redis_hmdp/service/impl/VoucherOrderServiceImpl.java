@@ -150,7 +150,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
 //        //获得用户id
 //        //Long userID = UserHolder.getUser().getId();
 //        Long userID = 5L;
-//        //todo:记得更改回来
+//        //
 //        /*//创建锁对象
 //        RedisLock redisLock = new RedisLockImpl("order:" + userID, stringRedisTemplate);
 //        //取得锁
@@ -243,9 +243,9 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         }
         UserDTO user = UserHolder.getUser();
         //获得用户ID
-        //Long userID = user.getId();
-        Long userID = 5L;
-        //todo:记得更改
+        Long userID = user.getId();
+        //Long userID = 5L;
+        //
         //执行lua脚本
         Long result = stringRedisTemplate.execute(SECKILL_SCRIPT,
                 Collections.emptyList(),
@@ -284,9 +284,9 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
     {
         //判断当前优惠券用户是否已经下过单
         //获得用户id
-        //Long userID = UserHolder.getUser().getId();
-        Long userID = 5L;
-        //todo:记得更改回来
+        Long userID = UserHolder.getUser().getId();
+        //Long userID = 5L;
+        //
         /*//创建锁对象
         RedisLock redisLock = new RedisLockImpl("order:" + userID, stringRedisTemplate);
         //取得锁

@@ -1651,8 +1651,8 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
     {
         //判断当前优惠券用户是否已经下过单
         //获得用户id
-        //Long userID = UserHolder.getUser().getId();
-        Long userID = 5L;
+        Long userID = UserHolder.getUser().getId();
+        //Long userID = 5L;
         //todo:记得更改回来
         synchronized (userID.toString().intern())
         {
@@ -1681,7 +1681,7 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
             voucherOrder.setVoucherId(voucherId);
             voucherOrder.setId(orderID);
             //设置用户
-            //Long userID = UserHolder.getUser().getId();
+            Long userID = UserHolder.getUser().getId();
             voucherOrder.setUserId(userID);
             //保存订单
             this.save(voucherOrder);
