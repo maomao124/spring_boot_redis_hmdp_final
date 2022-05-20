@@ -56,6 +56,8 @@ public class RefreshTokenInterceptor implements HandlerInterceptor
         if (token == null || token.equals(""))
         {
             //不存在，拦截
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().write("no token");
             return false;
         }
         //token存在，根据token获取redisKey

@@ -89,9 +89,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         Long userId = blog.getUserId();
         //查询
         User user = userService.getById(userId);
+        //判断用户是否已经点赞(检查设置在key是否包含value)
+        Boolean member = stringRedisTemplate.opsForSet().isMember(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
         //填充
         blog.setIcon(user.getIcon());
         blog.setName(user.getNickName());
+        blog.setIsLike(BooleanUtil.isTrue(member));
         //返回
         return Result.ok(blog);
     }
@@ -154,6 +157,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         //非空
         //解析出用户的id
         List<Long> ids = range.stream().map(Long::valueOf).collect(Collectors.toList());
+        //判断
+        if (ids.size() == 0)
+        {
+            return Result.ok();
+        }
         //拼接
         String join = StrUtil.join(",", ids);
         //查询数据库
@@ -247,6 +255,11 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
                 minTime = time;
                 count = 1;
             }
+        }
+        //判断
+        if (ids.size() == 0)
+        {
+            return Result.ok();
         }
         String join = StrUtil.join(",", ids);
         //查数据库

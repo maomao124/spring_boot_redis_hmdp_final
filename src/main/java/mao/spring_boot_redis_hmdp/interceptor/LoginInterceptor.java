@@ -38,6 +38,8 @@ public class LoginInterceptor implements HandlerInterceptor
         {
             //不存在，拦截，响应401
             response.setStatus(401);
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().write("请先登录");
             return false;
         }
         //放行

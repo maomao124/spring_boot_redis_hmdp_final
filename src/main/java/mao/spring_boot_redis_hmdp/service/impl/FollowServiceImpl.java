@@ -135,7 +135,7 @@ public class FollowServiceImpl extends ServiceImpl<FollowMapper, Follow> impleme
             //登录用户的key
             String redisUserKey = RedisConstants.FOLLOW_KEY + userID;
             //移除
-            stringRedisTemplate.opsForSet().remove(redisUserKey, followUserId);
+            stringRedisTemplate.opsForSet().remove(redisUserKey, followUserId.toString());
         }
         //返回
         return Result.ok();

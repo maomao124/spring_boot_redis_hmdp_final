@@ -35,7 +35,7 @@ public class FollowController
      * @param followUserId 被关注的用户的id
      * @return Result
      */
-    @PutMapping("/or/not/{id}")
+    @GetMapping ("/or/not/{id}")
     public Result isFollow(@PathVariable("id") Long followUserId)
     {
         return followService.isFollow(followUserId);
