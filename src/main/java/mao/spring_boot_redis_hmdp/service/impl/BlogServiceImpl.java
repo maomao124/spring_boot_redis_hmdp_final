@@ -63,7 +63,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             User user = userService.getById(userId);
             //判断用户是否已经点赞(检查设置在key是否包含value)
             String key = "blog:liked:" + blog.getId();
-            Double score = stringRedisTemplate.opsForZSet().score(key, userId.toString());
+            Double score = stringRedisTemplate.opsForZSet().score(key, UserHolder.getUser().getId().toString());
             blog.setName(user.getNickName());
             blog.setIcon(user.getIcon());
             blog.setIsLike(score != null);
@@ -75,12 +75,12 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
     public Result queryBlogById(String id)
     {
         //查询
-        //Blog blog = this.getById(id);
-        Blog blog = redisUtils.query(RedisConstants.BLOG_KEY,
+        Blog blog = this.getById(id);
+        /*Blog blog = redisUtils.query(RedisConstants.BLOG_KEY,
                 RedisConstants.LOCK_BLOG_KEY, id,
                 Blog.class, this::getById,
                 RedisConstants.CACHE_BLOG_TTL,
-                TimeUnit.MINUTES, 120);
+                TimeUnit.MINUTES, 120);*/
         //判断是否存在
         if (blog == null)
         {
@@ -98,9 +98,10 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             //用户未登录，无需查询是否点赞
             return Result.ok();
         }
+
         //判断用户是否已经点赞(检查设置在key是否包含value)
         String key = "blog:liked:" + blog.getId();
-        Double score = stringRedisTemplate.opsForZSet().score(key, userId.toString());
+        Double score = stringRedisTemplate.opsForZSet().score(key, UserHolder.getUser().getId().toString());
         //填充
         blog.setIcon(user.getIcon());
         blog.setName(user.getNickName());
@@ -126,7 +127,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             {
                 //成功
                 //让redis数据过期
-                stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
+                //stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
                 //保存用户到Redis的set集合
                 stringRedisTemplate.opsForZSet().add(RedisConstants.BLOG_LIKED_KEY + id,
                         user.getId().toString(), System.currentTimeMillis());
@@ -143,7 +144,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
             {
                 //成功
                 //让redis数据过期
-                stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
+                //stringRedisTemplate.delete(RedisConstants.BLOG_KEY);
                 //移除用户
                 stringRedisTemplate.opsForZSet().remove(RedisConstants.BLOG_LIKED_KEY + id, user.getId().toString());
             }
@@ -176,7 +177,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog> implements IB
         //拼接
         String join = StrUtil.join(",", ids);
         //查询数据库
-        List<User> users = userService.query().in("id", ids).last("order by filed(id, " + join + ")").list();
+        List<User> users = userService.query().in("id", ids).last("order by field(id, " + join + ")").list();
         //转换成dto
         List<UserDTO> dtoList = users.stream().map(user -> BeanUtil.copyProperties(user, UserDTO.class)).
                 collect(Collectors.toList());
