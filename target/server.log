@@ -1,23 +1,23 @@
-2022-05-21 13:45:54.267  INFO 14412 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Starting SpringBootRedisHmdpFinalApplication v0.0.1-SNAPSHOT using Java 16.0.2 on mao with PID 14412 (H:\程序\大三下期\spring_boot_redis_hmdp_final\target\spring_boot_redis_hmdp-0.0.1-SNAPSHOT.jar started by mao in H:\程序\大三下期\spring_boot_redis_hmdp_final\target)
-2022-05-21 13:45:54.271 DEBUG 14412 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Running with Spring Boot v2.7.0, Spring v5.3.20
-2022-05-21 13:45:54.271  INFO 14412 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : The following 1 profile is active: "dev"
-2022-05-21 13:45:55.502  INFO 14412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2022-05-21 13:45:55.506  INFO 14412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-2022-05-21 13:45:55.536  INFO 14412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-2022-05-21 13:45:56.497  INFO 14412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
-2022-05-21 13:45:56.511  INFO 14412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2022-05-21 13:45:56.511  INFO 14412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
-2022-05-21 13:45:56.589  INFO 14412 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2022-05-21 13:45:56.590  INFO 14412 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2258 ms
-2022-05-21 13:45:56.682  INFO 14412 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2022-05-21 13:45:56.936  INFO 14412 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2022-05-21 13:45:57.514  INFO 14412 --- [main] org.redisson.Version                     : Redisson 3.17.0
-2022-05-21 13:45:57.981  INFO 14412 --- [redisson-netty-2-23] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
-2022-05-21 13:45:57.995  INFO 14412 --- [redisson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
-2022-05-21 13:46:00.365  INFO 14412 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2022-05-21 13:46:00.504  INFO 14412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
-2022-05-21 13:46:00.508  INFO 14412 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
-2022-05-21 13:46:00.591  INFO 14412 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#79d06bbd:0/SimpleConnection@1dbd580 [delegate=amqp://admin@127.0.0.1:5672/, localPort= 53899]
-2022-05-21 13:46:00.598  INFO 14412 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable or auto-delete Exchange (hmdp_exchange) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
-2022-05-21 13:46:00.598  INFO 14412 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (hmdp_queue) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
-2022-05-21 13:46:00.674  INFO 14412 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Started SpringBootRedisHmdpFinalApplication in 7.085 seconds (JVM running for 7.607)
+2022-05-21 14:40:19.003  INFO 15724 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Starting SpringBootRedisHmdpFinalApplication v0.0.1-SNAPSHOT using Java 16.0.2 on mao with PID 15724 (H:\程序\大三下期\spring_boot_redis_hmdp_final\target\spring_boot_redis_hmdp-0.0.1-SNAPSHOT.jar started by mao in H:\程序\大三下期\spring_boot_redis_hmdp_final\target)
+2022-05-21 14:40:19.006 DEBUG 15724 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-05-21 14:40:19.007  INFO 15724 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : The following 1 profile is active: "dev"
+2022-05-21 14:40:20.271  INFO 15724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-21 14:40:20.276  INFO 15724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-05-21 14:40:20.306  INFO 15724 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+2022-05-21 14:40:21.281  INFO 15724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-05-21 14:40:21.292  INFO 15724 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-05-21 14:40:21.293  INFO 15724 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-05-21 14:40:21.369  INFO 15724 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-05-21 14:40:21.369  INFO 15724 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2300 ms
+2022-05-21 14:40:21.462  INFO 15724 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-05-21 14:40:21.773  INFO 15724 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-05-21 14:40:22.396  INFO 15724 --- [main] org.redisson.Version                     : Redisson 3.17.0
+2022-05-21 14:40:22.803  INFO 15724 --- [redisson-netty-2-19] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-21 14:40:22.815  INFO 15724 --- [redisson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-21 14:40:25.120  INFO 15724 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-05-21 14:40:25.265  INFO 15724 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-05-21 14:40:25.269  INFO 15724 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2022-05-21 14:40:25.354  INFO 15724 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5bb51241:0/SimpleConnection@6c5ddccd [delegate=amqp://admin@127.0.0.1:5672/, localPort= 63783]
+2022-05-21 14:40:25.361  INFO 15724 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable or auto-delete Exchange (hmdp_exchange) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2022-05-21 14:40:25.362  INFO 15724 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (hmdp_queue) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-05-21 14:40:25.449  INFO 15724 --- [main] m.s.SpringBootRedisHmdpFinalApplication  : Started SpringBootRedisHmdpFinalApplication in 7.115 seconds (JVM running for 7.631)
