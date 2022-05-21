@@ -41,3 +41,29 @@
 2022-05-21 13:47:11.980  INFO 14748 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
 2022-05-21 13:47:11.997  INFO 14748 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
 2022-05-21 13:47:12.001  INFO 14748 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2022-05-21 13:48:26.615  INFO 19224 --- [main] SpringBootRedisHmdpFinalApplicationTests : Starting SpringBootRedisHmdpFinalApplicationTests using Java 16.0.2 on mao with PID 19224 (started by mao in H:\程序\大三下期\spring_boot_redis_hmdp_final)
+2022-05-21 13:48:26.616 DEBUG 19224 --- [main] SpringBootRedisHmdpFinalApplicationTests : Running with Spring Boot v2.7.0, Spring v5.3.20
+2022-05-21 13:48:26.617  INFO 19224 --- [main] SpringBootRedisHmdpFinalApplicationTests : The following 1 profile is active: "dev"
+2022-05-21 13:48:27.729  INFO 19224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2022-05-21 13:48:27.733  INFO 19224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2022-05-21 13:48:27.772  INFO 19224 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+2022-05-21 13:48:28.774  INFO 19224 --- [main] org.redisson.Version                     : Redisson 3.17.0
+2022-05-21 13:48:29.090  INFO 19224 --- [redisson-netty-2-23] o.r.c.pool.MasterPubSubConnectionPool    : 1 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-21 13:48:29.102  INFO 19224 --- [redisson-netty-2-19] o.r.c.pool.MasterConnectionPool          : 24 connections initialized for 127.0.0.1/127.0.0.1:6379
+2022-05-21 13:48:29.320  INFO 19224 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2022-05-21 13:48:29.542  INFO 19224 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2022-05-21 13:48:32.916  INFO 19224 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2022-05-21 13:48:33.035  INFO 19224 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [127.0.0.1:5672]
+2022-05-21 13:48:33.112  INFO 19224 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4727e5fc:0/SimpleConnection@7a6e0f3c [delegate=amqp://admin@127.0.0.1:5672/, localPort= 54039]
+2022-05-21 13:48:33.121  INFO 19224 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable or auto-delete Exchange (hmdp_exchange) durable:false, auto-delete:false. It will be deleted by the broker if it shuts down, and can be redeclared by closing and reopening the connection.
+2022-05-21 13:48:33.122  INFO 19224 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (hmdp_queue) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-05-21 13:48:33.218  INFO 19224 --- [main] SpringBootRedisHmdpFinalApplicationTests : Started SpringBootRedisHmdpFinalApplicationTests in 7.02 seconds (JVM running for 7.948)
+2022-05-21 13:48:34.043 DEBUG 19224 --- [main] m.s.mapper.ShopMapper.selectList         : ==>  Preparing: SELECT id,name,type_id,images,area,address,x,y,avg_price,sold,comments,score,open_hours,create_time,update_time FROM tb_shop
+2022-05-21 13:48:34.076 DEBUG 19224 --- [main] m.s.mapper.ShopMapper.selectList         : ==> Parameters: 
+2022-05-21 13:48:34.118 DEBUG 19224 --- [main] m.s.mapper.ShopMapper.selectList         : <==      Total: 14
+2022-05-21 13:48:34.906  INFO 19224 --- [main] SpringBootRedisHmdpFinalApplicationTests : 统计结果：1998502
+2022-05-21 13:48:34.955  INFO 19224 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-05-21 13:48:35.225  INFO 19224 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-05-21 13:48:35.228  INFO 19224 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-05-21 13:48:35.242  INFO 19224 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2022-05-21 13:48:35.245  INFO 19224 --- [SpringApplicationShutdownHook] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed

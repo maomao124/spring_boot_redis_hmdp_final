@@ -1,2 +1,3 @@
-mvn package
+mvn package -DskipTests=true
+pause
 pause
