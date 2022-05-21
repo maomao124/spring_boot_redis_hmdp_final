@@ -20,6 +20,8 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -216,4 +218,22 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         //返回
         return Result.ok(count);
     }
+
+    @Override
+    public Result logout(HttpServletRequest request, HttpServletResponse response)
+    {
+        //从请求头里获取token
+        String token = request.getHeader("authorization");
+        //key
+        String tokenKey = RedisConstants.LOGIN_USER_KEY + token;
+        //删除redis里的相关key
+        Boolean delete = stringRedisTemplate.delete(tokenKey);
+        //判断
+        if (delete==null||!delete)
+        {
+            return Result.fail("退出登录失败");
+        }
+        return Result.ok();
+    }
+
 }

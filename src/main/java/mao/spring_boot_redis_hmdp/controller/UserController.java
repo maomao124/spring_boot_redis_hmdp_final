@@ -14,6 +14,8 @@ import mao.spring_boot_redis_hmdp.utils.UserHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -55,10 +57,10 @@ public class UserController
      * @return 无
      */
     @PostMapping("/logout")
-    public Result logout()
+    public Result logout(HttpServletRequest request, HttpServletResponse response)
     {
-        // TODO 实现登出功能
-        return Result.fail("功能未完成");
+        //实现登出功能
+        return userService.logout(request,response);
     }
 
     @GetMapping("/me")

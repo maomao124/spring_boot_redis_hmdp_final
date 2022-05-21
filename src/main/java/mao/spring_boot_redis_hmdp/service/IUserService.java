@@ -5,6 +5,8 @@ import mao.spring_boot_redis_hmdp.dto.LoginFormDTO;
 import mao.spring_boot_redis_hmdp.dto.Result;
 import mao.spring_boot_redis_hmdp.entity.User;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
@@ -42,4 +44,14 @@ public interface IUserService extends IService<User>
      * @return Result
      */
     Result signCount();
+
+
+    /**
+     * 退出登录
+     *
+     * @param request  HttpServletRequest
+     * @param response HttpServletResponse
+     * @return Result
+     */
+    Result logout(HttpServletRequest request, HttpServletResponse response);
 }
